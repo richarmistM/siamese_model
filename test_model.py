@@ -36,6 +36,7 @@ parser.add_argument('--plot-method', type=str, default='pca', choices=['pca', 't
 args = parser.parse_args()
 
 
+
 # -------------------------- 工具函数 --------------------------
 def get_transform():
     """测试/验证用的预处理（仅标准化）"""

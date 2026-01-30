@@ -46,6 +46,7 @@ def main():
     # 确保保存目录存在
     os.makedirs(os.path.dirname(args.save_model), exist_ok=True)
 
+
     # 数据预处理 - 增强光照鲁棒性
     # ColorJitter: 随机改变亮度、对比度、饱和度，模拟复杂光照环境
     transform_train = transforms.Compose([
