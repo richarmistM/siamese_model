@@ -14,9 +14,21 @@ from datasets import StatusDataset
 from networks import EnhancedEmbeddingNet, EnhancedSiameseNet
 
 # -------------------------- 配置参数 --------------------------
+
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 parser = argparse.ArgumentParser(description='模型评估与可视化')
-parser.add_argument('--dataset-path', type=str, default='./datasets', help='数据集路径')
-parser.add_argument('--model-path', type=str, default='./saved_models/siamese_model.pth', help='模型路径')
+
+# --- 修改 1：数据集路径 ---
+parser.add_argument('--dataset-path', type=str,
+                    default=os.path.join(ROOT_DIR, 'datasets'),
+                    help='数据集路径')
+
+# --- 修改 2：模型加载路径 ---
+parser.add_argument('--model-path', type=str,
+                    default=os.path.join(ROOT_DIR, 'saved_models', 'siamese_model.pth'),
+                    help='模型路径')
+
 parser.add_argument('--batch-size', type=int, default=64, help='提取特征时的批量大小')
 parser.add_argument('--cuda', action='store_true', default=torch.cuda.is_available(), help='是否使用GPU')
 parser.add_argument('--plot-method', type=str, default='pca', choices=['pca', 'tsne'],

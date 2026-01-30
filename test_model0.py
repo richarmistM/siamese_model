@@ -9,10 +9,26 @@ from networks import EnhancedEmbeddingNet, EnhancedSiameseNet
 import argparse
 
 # -------------------------- 配置参数 --------------------------
+
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 parser = argparse.ArgumentParser(description='孪生网络模型测试')
-parser.add_argument('--dataset-path', type=str, default='./datasets', help='数据集根路径')
-parser.add_argument('--model-path', type=str, default='./saved_models/siamese_model.pth', help='训练好的模型路径')
-parser.add_argument('--test-img-path', type=str, default='./test_images/img.jpg', help='单张测试图片路径')
+
+# --- 修改 1：数据集路径 ---
+parser.add_argument('--dataset-path', type=str,
+                    default=os.path.join(ROOT_DIR, 'datasets'),
+                    help='数据集根路径')
+
+# --- 修改 2：模型路径 ---
+parser.add_argument('--model-path', type=str,
+                    default=os.path.join(ROOT_DIR, 'saved_models', 'siamese_model.pth'),
+                    help='训练好的模型路径')
+
+# --- 修改 3：测试图片路径 ---
+parser.add_argument('--test-img-path', type=str,
+                    default=os.path.join(ROOT_DIR, 'test_images', 'img.jpg'),
+                    help='单张测试图片路径')
+
 parser.add_argument('--cuda', action='store_true', default=torch.cuda.is_available(), help='是否使用GPU')
 parser.add_argument('--ref-samples-per-class', type=int, default=5, help='每个类别选取的参考样本数（计算类平均嵌入）')
 parser.add_argument('--test-samples-per-class', type=int, default=10, help='每个类别选取的测试样本数（计算准确率）')

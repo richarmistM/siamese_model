@@ -12,9 +12,17 @@ import os
 
 
 def main():
+
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+
     # 命令行参数配置
     parser = argparse.ArgumentParser(description='状态标签检测 - 复杂光照条件下孪生网络')
-    parser.add_argument('--dataset-path', type=str, default='./datasets', help='数据集路径')
+
+    # --- 修改 1：数据集路径使用 os.path.join 拼接 ---
+    parser.add_argument('--dataset-path', type=str,
+                        default=os.path.join(ROOT_DIR, 'datasets'),
+                        help='数据集路径')
+
     parser.add_argument('--batch-size', type=int, default=32, help='批量大小')
     parser.add_argument('--epochs', type=int, default=100, help='训练轮数')
     parser.add_argument('--lr', type=float, default=0.0001, help='学习率')
@@ -25,11 +33,15 @@ def main():
                         help='是否使用GPU')
     parser.add_argument('--max-samples-per-class', type=int, default=float('inf'),
                         help='每类最大样本数')
-    parser.add_argument('--save-model', type=str, default='./saved_models/siamese_model.pth',
+
+    # --- 修改 2：模型保存路径使用 os.path.join 拼接 ---
+    parser.add_argument('--save-model', type=str,
+                        default=os.path.join(ROOT_DIR, 'saved_models', 'siamese_model.pth'),
                         help='模型保存路径')
+
     parser.add_argument('--resume', type=str, default=None, help='继续训练的模型路径')
 
-    args = parser.parse_args()
+    args = parser.parse_args()rse_args()
 
     # 确保保存目录存在
     os.makedirs(os.path.dirname(args.save_model), exist_ok=True)
