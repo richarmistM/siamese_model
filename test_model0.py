@@ -248,6 +248,7 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"单张图片测试失败: {e}")
 
+
     # 4. 数据集批量测试（计算准确率）(训练集）
     test_dataset_accuracy(
         embedding_net, args.dataset_path, class_ref_embeds, args.test_samples_per_class, args.cuda, args.distance_type
