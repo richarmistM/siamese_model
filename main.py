@@ -41,7 +41,7 @@ def main():
 
     parser.add_argument('--resume', type=str, default=None, help='继续训练的模型路径')
 
-    args = parser.parse_args()rse_args()
+    args = parser.parse_args()
 
     # 确保保存目录存在
     os.makedirs(os.path.dirname(args.save_model), exist_ok=True)
