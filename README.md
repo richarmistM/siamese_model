@@ -1,3 +1,4 @@
+![项目截图]( chart/embeddings_train.png)
 # Complex Lighting Status Detection with Siamese Networks
 # 复杂光照环境下的状态标签检测系统
 
