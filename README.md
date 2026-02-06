@@ -1,7 +1,7 @@
-![项目截图]( chart/embeddings_train.png)
-![项目截图]( chart/embeddings_val.png)
 # Complex Lighting Status Detection with Siamese Networks
 # 复杂光照环境下的状态标签检测系统
+![项目截图]( chart/embeddings_train.png)
+![项目截图]( chart/embeddings_val.png)
 
 这是一个基于 **孪生网络 (Siamese Network)** 和 **度量学习 (Metric Learning)** 的计算机视觉项目。
 
